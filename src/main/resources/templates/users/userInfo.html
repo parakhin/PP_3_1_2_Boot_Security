@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Личный кабинет</title>
+</head>
+<body>
+<div th:replace="header :: content"></div>
+    <form th:method="post" th:action="@{/user/}" th:object="${user}">
+        <input type="hidden" th:field="*{id}">
+        <label for="login">login</label>
+        <input readonly id="login" th:field="*{username}">
+        <br/>
+        <label for="password">password</label>
+        <input type="password" id="password" th:field="*{password}">
+        <br/>
+        <label for="name">Имя</label>
+        <input id="name" th:field="*{name}">
+        <br/>
+        <label for="age">Возраст</label>
+        <input id="age" th:field="*{age}">
+        <br/>
+        <input type="submit" value="Сохранить">
+    </form>
+</body>
+</html>
