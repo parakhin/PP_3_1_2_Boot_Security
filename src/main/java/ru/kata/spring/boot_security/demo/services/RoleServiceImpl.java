@@ -8,13 +8,14 @@ import ru.kata.spring.boot_security.demo.repositories.RolesRepository;
 import java.util.List;
 
 @Service
-public class RoleServiceImpl implements RoleService{
+public class RoleServiceImpl implements RoleService {
     private RolesRepository rolesRepository;
 
     @Autowired
     public RoleServiceImpl(RolesRepository rolesRepository) {
         this.rolesRepository = rolesRepository;
     }
+
     public List<Role> findAll() {
         return rolesRepository.findAll();
     }

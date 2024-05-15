@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import ru.kata.spring.boot_security.demo.models.Role;
 import ru.kata.spring.boot_security.demo.services.RoleService;
 
-import java.util.List;
-
 @Controller
 @RequestMapping("/admin/roles")
 public class RoleController {
@@ -23,7 +21,7 @@ public class RoleController {
 
     @GetMapping
     public String index(Model model) {
-        model.addAttribute("roles" , roleService.findAll());
+        model.addAttribute("roles", roleService.findAll());
         return "/roles/index";
     }
 

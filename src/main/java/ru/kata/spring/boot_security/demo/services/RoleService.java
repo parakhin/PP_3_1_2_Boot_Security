@@ -8,6 +8,7 @@ public interface RoleService {
     List<Role> findAll();
 
     void save(Role role);
+
     void deleteById(int id);
 
     Role findOne(int id);

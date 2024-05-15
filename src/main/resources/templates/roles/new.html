@@ -6,10 +6,10 @@
 </head>
 <body>
 <div th:replace="header :: content"></div>
-    <form th:method="post" th:action="@{/admin/roles/}" th:object="${role}">
-        <label for="title">Название роли</label>
-        <input id="title" th:field="*{title}">
-        <input type="submit" value="Сохранить">
-    </form>
+<form th:method="post" th:action="@{/admin/roles/}" th:object="${role}">
+    <label for="title">Название роли</label>
+    <input id="title" th:field="*{title}">
+    <input type="submit" value="Сохранить">
+</form>
 </body>
 </html>
