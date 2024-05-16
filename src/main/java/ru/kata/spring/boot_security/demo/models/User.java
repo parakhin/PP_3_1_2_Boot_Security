@@ -3,10 +3,8 @@ package ru.kata.spring.boot_security.demo.models;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,9 +24,11 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+
+    private String lastName;
     private int age;
 
-    private String username;
+    private String email;
 
     private String password;
 
@@ -44,10 +44,10 @@ public class User implements UserDetails {
     public User() {
     }
 
-    public User(String name, String login, String password, int age) {
+    public User(String name, String email, String password, int age) {
         this.name = name;
         this.age = age;
-        this.username = login;
+        this.email = email;
         this.password = password;
     }
 
@@ -93,8 +93,12 @@ public class User implements UserDetails {
         return password;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public void setPassword(String password) {
@@ -105,9 +109,17 @@ public class User implements UserDetails {
         this.roles = roles;
     }
 
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
     @Override
     public String getUsername() {
-        return username;
+        return email;
     }
 
     @Override
@@ -144,11 +156,12 @@ public class User implements UserDetails {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(id, user.id) && Objects.equals(username, user.username);
+        return Objects.equals(id, user.id) && Objects.equals(email, user.email);
     }
+
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, username);
+        return Objects.hash(id, email);
     }
 }

@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @Service
 public class UserDetailServiceImpl implements UserDetailsService {
-    private UserService userService;
+    private final UserService userService;
 
     @Autowired
     public UserDetailServiceImpl(UserService userService) {
@@ -22,7 +22,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
     @Override
     @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<User> user = userService.loadUserByUsername(username);
+        Optional<User> user = userService.loadUserByEmail(username);
 
         if (user.isEmpty()) {
             throw new UsernameNotFoundException("user not found");

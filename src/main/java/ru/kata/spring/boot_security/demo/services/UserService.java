@@ -16,5 +16,5 @@ public interface UserService {
 
     void delete(Long id);
 
-    Optional<User> loadUserByUsername(String username);
+    Optional<User> loadUserByEmail(String username);
 }

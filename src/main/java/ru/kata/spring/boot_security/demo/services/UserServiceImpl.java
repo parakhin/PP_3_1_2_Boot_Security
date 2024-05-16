@@ -50,7 +50,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Transactional(readOnly = true)
-    public Optional<User> loadUserByUsername(String username) {
-        return usersRepository.getUserByUsername(username);
+    public Optional<User> loadUserByEmail(String username) {
+        return usersRepository.getUserByEmail(username);
     }
 }

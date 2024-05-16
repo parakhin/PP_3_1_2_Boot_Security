@@ -33,7 +33,7 @@ public class UserController {
     }
 
     @PostMapping
-    public String update (@ModelAttribute("user") User user) {
+    public String update(@ModelAttribute("user") User user) {
         User authorizedUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User savedUser = userService.findOne(authorizedUser.getId());
 
@@ -46,5 +46,10 @@ public class UserController {
 
         userService.save(savedUser);
         return "redirect:/user/";
+    }
+
+    @ModelAttribute("title")
+    public String title() {
+        return "User page";
     }
 }

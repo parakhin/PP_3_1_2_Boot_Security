@@ -48,6 +48,10 @@ public class Role implements GrantedAuthority {
         return title;
     }
 
+    public String getPrintTitle() {
+        return title.replace("ROLE_", "");
+    }
+
     public List<User> getUsers() {
         return users;
     }
@@ -68,5 +72,10 @@ public class Role implements GrantedAuthority {
     @Override
     public int hashCode() {
         return Objects.hash(title);
+    }
+
+    @Override
+    public String toString() {
+        return Integer.toString(id);
     }
 }

@@ -1,5 +1,6 @@
 package ru.kata.spring.boot_security.demo.controllers;
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,8 +25,10 @@ public class AdminController {
     }
 
     @GetMapping
-    public String index(Model model) {
+    public String index(Model model, @ModelAttribute("newUser") User newUser) {
         model.addAttribute("users", userService.findAll());
+        model.addAttribute("roles", roleService.findAll());
+        model.addAttribute("user", (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         return "/admin/index";
     }
 
@@ -65,5 +68,10 @@ public class AdminController {
     public String delete(@RequestParam("id") Long id) {
         userService.delete(id);
         return "redirect:/admin/";
+    }
+
+    @ModelAttribute("title")
+    public String title() {
+        return "Admin panel";
     }
 }
