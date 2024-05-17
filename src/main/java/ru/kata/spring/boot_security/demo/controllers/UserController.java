@@ -47,9 +47,4 @@ public class UserController {
         userService.save(savedUser);
         return "redirect:/user/";
     }
-
-    @ModelAttribute("title")
-    public String title() {
-        return "User page";
-    }
 }

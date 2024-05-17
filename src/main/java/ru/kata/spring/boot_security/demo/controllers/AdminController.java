@@ -69,9 +69,4 @@ public class AdminController {
         userService.delete(id);
         return "redirect:/admin/";
     }
-
-    @ModelAttribute("title")
-    public String title() {
-        return "Admin panel";
-    }
 }
