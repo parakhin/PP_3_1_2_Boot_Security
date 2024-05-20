@@ -15,7 +15,7 @@
         <div class="card-header">
             <h3>About user</h3>
         </div>
-        <div class="card-body">
+        <div id="userinfo-container" class="card-body">
             <table class="table table-striped">
                 <thead>
                 <tr>
@@ -27,22 +27,19 @@
                     <th scope="col">Role</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr>
-                    <td th:text="${user.id}"></td>
-                    <td th:text="${user.name}"></td>
-                    <td th:text="${user.lastName}"></td>
-                    <td th:text="${user.age}"></td>
-                    <td th:text="${user.email}"></td>
-                    <td>
-                                    <span th:each="role: ${user.roles}" th:text="${role.getPrintTitle() + ' '}">
-                                    </span>
-                    </td>
-                </tr>
+                <tbody id="userinfo-container__body">
+
                 </tbody>
             </table>
         </div>
     </div>
+    <script th:src="@{/scripts/user.js}"></script>
+    <script th:inline="javascript">
+        const email = '[(${user.email})]';
+        window.addEventListener("load", () => {
+            showUserDetail(document.getElementById("userinfo-container__body"), email)
+        })
+    </script>
 </section>
 
 </body>

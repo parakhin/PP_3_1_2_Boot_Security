@@ -14,6 +14,7 @@ public interface UserService {
 
     void update(Long id, User user);
 
+
     void delete(Long id);
 
     Optional<User> loadUserByEmail(String username);

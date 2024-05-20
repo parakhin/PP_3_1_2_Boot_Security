@@ -34,7 +34,7 @@ public class DefaultUserCreator {
 
         User admin = new User("admin", "admin@rr.rr", passwordEncoder.encode("123456"), 200);
         admin.setRoles(List.of(adminRole, userRole));
-        User user = new User("user", "user@rr.rr", passwordEncoder.encode("123456"), -1000);
+        User user = new User("user", "user@rr.rr", passwordEncoder.encode("123456"), 50);
         user.setRoles(List.of(userRole));
 
         userService.save(admin);
